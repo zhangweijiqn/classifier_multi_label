@@ -27,9 +27,11 @@ class Hyperparamters:
     
     # Train/Test data 
     data_dir = os.path.join(pwd,'data')
-    train_data = 'train_onehot.csv'
-    test_data = 'test_onehot.csv'
-    
+    # train_data = 'train_onehot.csv'
+    # test_data = 'test_onehot.csv'
+    train_data = 'result/train.csv'
+    test_data = 'result/test.csv'
+
     # Load vocabulcary dict
     dict_id2label,dict_label2id = load_vocabulary(os.path.join(pwd,'data','vocabulary_label.txt'))
     label_vocabulary = list(dict_id2label.values())
@@ -47,7 +49,7 @@ class Hyperparamters:
     keep_prob = 0.5
     
     # Sequence and Label
-    sequence_length = 60
+    sequence_length = 128
     num_labels = len(list(dict_id2label))    
  
     # ALBERT
@@ -67,5 +69,4 @@ if __name__ == '__main__':
 
 
 
-    
-    
+

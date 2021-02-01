@@ -7,6 +7,10 @@ Created on Thu May 30 21:42:07 2019
 
 import os
 #os.environ["CUDA_VISIBLE_DEVICES"] = '-1'
+import sys
+root_path = os.path.abspath(os.path.dirname(__file__)).split('classifier_multi_label')[0]
+sys.path.append(root_path)
+
 import numpy as np
 import tensorflow as tf
 from classifier_multi_label.networks import NetworkAlbert

@@ -8,9 +8,10 @@ Created on Thu May 30 17:12:37 2019
 
 import os
 #os.environ["CUDA_VISIBLE_DEVICES"] = '-1'
-pwd = os.path.dirname(os.path.abspath(__file__))
 import sys
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+root_path = os.path.abspath(os.path.dirname(__file__)).split('classifier_multi_label')[0]
+sys.path.append(root_path)
+
 import numpy as np
 import tensorflow as tf
 from classifier_multi_label.networks import NetworkAlbert
@@ -64,6 +65,5 @@ if __name__ == '__main__':
     print(end-start)#57ms
     
 
-    
     
     
