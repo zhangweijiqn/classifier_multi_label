@@ -19,3 +19,7 @@ python predict.py
  # 知乎代码解读
 https://zhuanlan.zhihu.com/p/164873441
 
+ # 模型下载
+https://gitee.com/yh14232988/albert_zh
+albert_small_google_zh(累积学习10亿个样本,google版本):
+wget https://storage.googleapis.com/albert_zh/albert_small_zh_google.zip
