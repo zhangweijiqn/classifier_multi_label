@@ -63,7 +63,7 @@ class NetworkAlbert(object):
             zero = tf.zeros_like(self.probabilities)
             one = tf.ones_like(self.probabilities)
             self.predictions = tf.where(self.probabilities < 0.5, x=zero, y=one)
-            
+
         with tf.variable_scope("loss"):            
             # Summary for tensorboard
             if self.is_training:
@@ -92,7 +92,6 @@ class NetworkAlbert(object):
                 self.global_step = tf.Variable(0, name='global_step', trainable=False)             
                 per_example_loss = tf.nn.sigmoid_cross_entropy_with_logits(labels=self.label_ids,logits=logits)
                 self.loss = tf.reduce_mean(per_example_loss)
-
                 # Optimizer BERT
                 train_examples = processor.get_train_examples(hp.data_dir)
                 num_train_steps = int(
@@ -110,7 +109,7 @@ class NetworkAlbert(object):
                 # Summary for tensorboard                 
                 tf.summary.scalar('loss', self.loss)
                 self.merged = tf.summary.merge_all()
-                
+
                 
                 
 if __name__ == '__main__':

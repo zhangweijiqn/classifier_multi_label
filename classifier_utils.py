@@ -132,7 +132,7 @@ class DataProcessor(object):
         lines = [[jlabel[i],jobcontent[i]] for i in range(len(jlabel)) if type(jobcontent[i])==str]
         lines2 = shuffle_one(lines)
         print('Read csv finished!(1)')
-        print('Head data:',lines2[0:5])
+        #print('Head data:',lines2[0:5])
         print('Length of data:',len(lines2))
         return lines2
 
@@ -151,12 +151,12 @@ class ClassifyProcessor(DataProcessor):
     def get_dev_examples(self, data_dir):
         """See base class."""
         return self._create_examples(
-            self._read_tsv(os.path.join(data_dir, hp.test_data)), "dev")
+            self._read_csv(os.path.join(data_dir, hp.val_data)), "dev")
 
     def get_test_examples(self, data_dir):
         """See base class."""
         return self._create_examples(
-             self._read_tsv(os.path.join(data_dir, hp.test_data)), "test")
+             self._read_csv(os.path.join(data_dir, hp.test_data)), "test")
 
     def get_labels(self):
         """See base class."""
@@ -167,6 +167,7 @@ class ClassifyProcessor(DataProcessor):
         examples = []
         for (i, line) in enumerate(lines):
             guid = "%s-%s" % (set_type, i)
+
             text_a = tokenization.convert_to_unicode(line[1])
             label = tokenization.convert_to_unicode(line[0])
             #self.labels.add(label)
@@ -719,6 +720,18 @@ def get_features():
     segment_ids = [f.segment_ids for f in features]
     label_ids = [f.label_id for f in features]
     print('Get features finished!')
+    return input_ids,input_masks,segment_ids,label_ids
+
+def get_features_val():
+    # Load test data
+    train_examples = processor.get_dev_examples(data_dir)
+    # Get onehot feature
+    features = convert_examples_to_features( train_examples, label_list, max_seq_length, tokenizer,task_name='classify_test')
+    input_ids = [f.input_ids for f in features]
+    input_masks = [f.input_mask for f in features]
+    segment_ids = [f.segment_ids for f in features]
+    label_ids = [f.label_id for f in features]
+    print('Get features(val) finished!')
     return input_ids,input_masks,segment_ids,label_ids
 
 def get_features_test():

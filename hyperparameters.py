@@ -7,15 +7,22 @@ Created on Mon Nov 12 14:23:12 2018
 
 
 import os
+import sys
 pwd = os.path.dirname(os.path.abspath(__file__))
+root_path = os.path.abspath(os.path.dirname(__file__)).split('classifier_multi_label')[0]
+#root_path = os.path.abspath(__file__).split('classifier_multi_label')[0]
+print(root_path)
+sys.path.append(root_path)
+
 from classifier_multi_label.utils import load_vocabulary#,load_third_fourth_dict
 
 
 class Hyperparamters:
     # Train parameters
+    threshold=0.5
     num_train_epochs = 20
-    print_step = 10 
-    batch_size = 8           
+    print_step = 10
+    batch_size = 8
     summary_step = 10
     num_saved_per_epoch = 3
     max_to_keep = 100
@@ -30,6 +37,7 @@ class Hyperparamters:
     # train_data = 'train_onehot.csv'
     # test_data = 'test_onehot.csv'
     train_data = 'result/train.csv'
+    val_data='result/validation.csv'
     test_data = 'result/test.csv'
 
     # Load vocabulcary dict
@@ -58,10 +66,6 @@ class Hyperparamters:
     vocab_file = os.path.join(pwd,model,'vocab_chinese.txt')
     init_checkpoint = os.path.join(pwd,model,'albert_model.ckpt')
     saved_model_path = os.path.join(pwd,'model')    
-    
-   
-    
-    
     
 
 if __name__ == '__main__': 

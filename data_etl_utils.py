@@ -136,7 +136,6 @@ def process_label(df, cates, is_enhance=False, is_sampled=False, save_path=''):
     sub_df = df_raw[fields]
 
     train_data, val_data, test_data = split_dataset(sub_df)
-
     if save_path != '':
         train_data.to_csv(save_path + '/train.csv', index=False)
         val_data.to_csv(save_path + '/validation.csv', index=False)
@@ -193,7 +192,7 @@ def read_pandas(input_dir, outputfile=""):
 
 if __name__ == '__main__':
     #
-    input_dir = '/Users/4paradigm/Projects/content-tags/data/third_category/input'
+    input_dir = '/Users/4paradigm/PycharmProjects/content-tags/data/third_category/input'
     outputfile = './data/result/third_category_merge.csv'
     df = read_pandas(input_dir, outputfile)
     process_label(df, cates='三级分类', save_path='./data/result')
