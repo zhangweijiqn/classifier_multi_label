@@ -195,4 +195,4 @@ if __name__ == '__main__':
     input_dir = '/Users/4paradigm/PycharmProjects/content-tags/data/third_category/input'
     outputfile = './data/result/third_category_merge.csv'
     df = read_pandas(input_dir, outputfile)
-    process_label(df, cates='三级分类', save_path='./data/result')
+    process_label(df, cates='三级分类', save_path='../data/result')

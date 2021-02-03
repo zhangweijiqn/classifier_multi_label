@@ -14,7 +14,7 @@ root_path = os.path.abspath(os.path.dirname(__file__)).split('classifier_multi_l
 print(root_path)
 sys.path.append(root_path)
 
-from classifier_multi_label.utils import load_vocabulary#,load_third_fourth_dict
+from classifier_multi_label.utils.utils import load_vocabulary#,load_third_fourth_dict
 
 
 class Hyperparamters:

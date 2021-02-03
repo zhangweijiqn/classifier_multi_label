@@ -9,9 +9,9 @@ import os
 import tensorflow as tf
 from classifier_multi_label import modeling
 from classifier_multi_label import optimization
-from classifier_multi_label.utils import time_now_string
+from classifier_multi_label.utils.utils import time_now_string
 from classifier_multi_label.hyperparameters import Hyperparamters as hp
-from classifier_multi_label.classifier_utils import ClassifyProcessor
+from classifier_multi_label.utils.classifier_utils import ClassifyProcessor
 
 
 num_labels = hp.num_labels

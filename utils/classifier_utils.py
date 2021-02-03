@@ -14,7 +14,7 @@ from classifier_multi_label import modeling
 from classifier_multi_label import optimization
 from classifier_multi_label import tokenization
 from classifier_multi_label.hyperparameters import Hyperparamters as hp
-from classifier_multi_label.utils import load_csv,shuffle_one
+from classifier_multi_label.utils.utils import load_csv,shuffle_one
 
 
 
@@ -770,4 +770,3 @@ if __name__ == '__main__':
 
     
 
-    

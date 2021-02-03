@@ -15,7 +15,7 @@ sys.path.append(root_path)
 import numpy as np
 import tensorflow as tf
 from classifier_multi_label.networks import NetworkAlbert
-from classifier_multi_label.classifier_utils import get_feature_test,id2label
+from classifier_multi_label.utils.classifier_utils import get_feature_test,id2label
 from classifier_multi_label.hyperparameters import Hyperparamters as hp
           
 

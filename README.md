@@ -14,7 +14,7 @@
  3、训练  
  python train.py  
  4、预测  
-python predict.py  
+ python predict.py  
  
  # 知乎代码解读
 https://zhuanlan.zhihu.com/p/164873441

@@ -20,10 +20,10 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
 import tensorflow as tf
 from classifier_multi_label.networks import NetworkAlbert
-from classifier_multi_label.classifier_utils import get_features,get_features_val,get_features_test
+from classifier_multi_label.utils.classifier_utils import get_features,get_features_val,get_features_test
 from classifier_multi_label.hyperparameters import Hyperparamters as hp
-from classifier_multi_label.utils import select,shuffle_one,time_now_string
-from classifier_multi_label.auc import accuracy,presision,recall,measure_auc
+from classifier_multi_label.utils.utils import select,shuffle_one,time_now_string
+from classifier_multi_label.utils.evaluate_utils import accuracy,presision,recall,measure_auc
 class_=hp.label_vocabulary
 num_classes=len(class_)
 
