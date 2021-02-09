@@ -3,7 +3,7 @@
 func: 读取三级分类目录文件，多个文件整合为1个
 file format: 一级分类，二级分类，三级分类，title，content，来源，其它信息(URL)
 每个分类下多label用 | 分隔，如一级分类， 历史|军事
-python src/com/four_pd/etl/third_category/read_data_dir.py
+python utils/read_data_dir.py
 """
 
 import pandas as pd
@@ -11,7 +11,8 @@ from pandas.core.frame import DataFrame
 import os
 import sys
 
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+root_path = os.path.abspath(os.path.dirname(__file__)).split('classifier_multi_label')[0]
+sys.path.append(root_path)
 import re
 from sklearn.preprocessing import MultiLabelBinarizer
 from sklearn.model_selection import train_test_split
@@ -169,7 +170,7 @@ def split_dataset(df_raw):
     return train_set, val_set, test_set
 
 
-def read_pandas(input_dir, outputfile="", gen_label_voc=False):
+def read_pandas(input_dir, outputfile="", gen_label_voc=True):
     df = read_dir(input_dir)
 
     df = df.drop_duplicates()
@@ -201,7 +202,7 @@ def read_pandas(input_dir, outputfile="", gen_label_voc=False):
 
 if __name__ == '__main__':
     #
-    input_dir = '/Users/4paradigm/PycharmProjects/content-tags/data/third_category/input'
+    input_dir = '/Users/4paradigm/Projects/content-tags/data/third_category/input'
     outputfile = './data/result/third_category_merge.csv'
     df = read_pandas(input_dir, outputfile)
     process_label(df, cates='三级分类', save_path='../data/result')
