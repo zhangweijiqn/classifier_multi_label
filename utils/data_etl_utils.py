@@ -169,7 +169,7 @@ def split_dataset(df_raw):
     return train_set, val_set, test_set
 
 
-def read_pandas(input_dir, outputfile=""):
+def read_pandas(input_dir, outputfile="", gen_label_voc=False):
     df = read_dir(input_dir)
 
     df = df.drop_duplicates()
@@ -184,6 +184,15 @@ def read_pandas(input_dir, outputfile=""):
 
     if outputfile != "":
         sub_df.to_csv(outputfile, index=False)  # 将结果保存为新的csv文件
+
+    if gen_label_voc:
+        lset = {sub_df['三级分类'][0]}
+        for i in range(len(sub_df)):
+            lset.add(sub_df['三级分类'][i])
+        f = open(input_dir + '/vocabulary_label.txt', 'w+')
+        for l in lset:
+            f.write(l + "\n")
+        f.close()
 
     print("read failed files: %s" % str(failed_files))
 

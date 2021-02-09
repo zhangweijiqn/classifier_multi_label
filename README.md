@@ -8,7 +8,9 @@
  
  # 使用方法
  1、准备数据  
- 数据格式为：classifier_multi_label/data/test_onehot.csv  
+ 支持数据格式：classifier_multi_label/data/train.csv
+ 生成最终格式：python classifier_multi_label/utils/data_etl_utils.py
+ 最终数据格式为：classifier_multi_label/data/test_onehot.csv
  2、参数设置  
  参考脚本 hyperparameters.py，直接修改里面的数值即可。  
  3、训练  
